@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Boyfriend Day 💗</title>
+<style>
+*{box-sizing:border-box}
+body{
+  margin:0; min-height:100vh; overflow:hidden;
+  font-family: "Trebuchet MS", Arial, sans-serif;
+  background:
+    radial-gradient(circle at 20% 15%, rgba(255,255,255,.8) 0 3px, transparent 4px),
+    radial-gradient(circle at 80% 25%, rgba(255,255,255,.7) 0 3px, transparent 4px),
+    linear-gradient(135deg,#ffd6e7,#ffc1d9,#ffe5ef);
+  color:#8b3157;
+}
+.hearts{position:fixed;inset:0;pointer-events:none;opacity:.65}
+.hearts span{position:absolute;font-size:28px;animation:float 6s linear infinite}
+.hearts span:nth-child(1){left:8%;top:80%;animation-delay:0s}
+.hearts span:nth-child(2){left:25%;top:90%;animation-delay:1s}
+.hearts span:nth-child(3){left:48%;top:85%;animation-delay:2s}
+.hearts span:nth-child(4){left:72%;top:88%;animation-delay:3s}
+.hearts span:nth-child(5){left:90%;top:78%;animation-delay:4s}
+@keyframes float{to{transform:translateY(-110vh) rotate(25deg);opacity:0}}
+
+.card{
+  width:min(92%,520px); min-height:82vh; margin:7vh auto;
+  padding:34px 24px; text-align:center;
+  background:rgba(255,255,255,.72);
+  border:2px solid rgba(255,255,255,.8);
+  border-radius:30px;
+  box-shadow:0 18px 50px rgba(151,55,91,.2);
+  backdrop-filter:blur(8px);
+  position:relative;
+}
+.rose{font-size:52px;animation:pulse 1.8s infinite}
+@keyframes pulse{50%{transform:scale(1.08)}}
+h1{font-size:clamp(30px,8vw,48px);margin:8px 0;color:#b52f63}
+.love{font-size:28px;font-weight:bold;margin:18px 0}
+.subtitle{font-size:16px;color:#a04a6d;margin-bottom:25px}
+input{
+  width:90%; padding:15px 18px; border-radius:30px;
+  border:2px solid #f19abc; outline:none; font-size:16px;
+  text-align:center; background:#fff8fb;color:#7e3151;
+}
+button{
+  margin-top:15px;padding:13px 27px;border:0;border-radius:25px;
+  background:#e95c91;color:white;font-size:16px;font-weight:bold;
+  cursor:pointer;box-shadow:0 7px 18px rgba(214,65,117,.25)
+}
+button:active{transform:scale(.97)}
+#response{display:none}
+.message{
+  font-size:23px;font-weight:bold;line-height:1.5;
+  margin:25px auto 10px;color:#a72f60
+}
+.girl{
+  margin:8px auto 0; width:190px; height:190px; position:relative;
+}
+.head{position:absolute;width:82px;height:82px;background:#f5b58e;border-radius:50%;left:54px;top:8px;z-index:2;border:3px solid #8c4a3e}
+.hair{position:absolute;width:105px;height:105px;background:#4b2a25;border-radius:50% 50% 45% 45%;left:42px;top:0}
+.eye{position:absolute;width:7px;height:9px;background:#4a2a2a;border-radius:50%;top:43px;z-index:3}
+.e1{left:78px}.e2{left:108px}
+.mouth{position:absolute;width:24px;height:12px;border-bottom:3px solid #9b4051;border-radius:50%;left:83px;top:60px;z-index:3}
+.body{position:absolute;width:105px;height:90px;background:#f08db2;border-radius:50px 50px 15px 15px;left:43px;top:90px}
+.arm{position:absolute;width:72px;height:18px;background:#f5b58e;border-radius:20px;top:105px;z-index:4}
+.leftarm{left:7px;transform:rotate(18deg)} .rightarm{right:6px;transform:rotate(-18deg)}
+.rose2{position:absolute;font-size:50px;right:-2px;top:72px;z-index:5;transform:rotate(-18deg)}
+.caption{font-size:15px;color:#a04a6d}
+.hidden{display:none}
+</style>
+</head>
+<body>
+<div class="hearts"><span>💗</span><span>💕</span><span>🌹</span><span>💖</span><span>🌸</span></div>
+
+<div class="card" id="main">
+  <div id="start">
+    <div class="rose">🌹</div>
+    <h1>Happy Boyfriend Day<br>My Love 💗</h1>
+    <div class="love">I Love You ❤️</div>
+    <div class="subtitle">There is something I want to hear from you...</div>
+    <input id="reply" type="text" placeholder="Type your reply 💌" autocomplete="off">
+    <br>
+    <button onclick="checkReply()">Send My Love 💕</button>
+    <p id="hint" style="font-size:13px;color:#c05b80"></p>
+  </div>
+
+  <div id="response">
+    <div class="rose">💖🌹</div>
+    <div class="message">I love you till my last breath ❤️</div>
+    <div class="girl">
+      <div class="hair"></div><div class="head"></div>
+      <div class="eye e1"></div><div class="eye e2"></div><div class="mouth"></div>
+      <div class="body"></div><div class="arm leftarm"></div><div class="arm rightarm"></div>
+      <div class="rose2">🌹</div>
+    </div>
+    <div class="caption">A little rose for you 🌹<br><b>I Love You ❤️</b></div>
+  </div>
+</div>
+
+<script>
+function checkReply(){
+  const input=document.getElementById("reply");
+  const value=input.value.trim().toLowerCase().replace(/[^a-z]/g,"");
+  if(value.includes("iloveyoutoo")){
+    document.getElementById("start").style.display="none";
+    document.getElementById("response").style.display="block";
+  }else{
+    document.getElementById("hint").textContent='Almost! Type “I love you too” 💗';
+    input.focus();
+  }
+}
+document.getElementById("reply").addEventListener("keydown",e=>{
+  if(e.key==="Enter") checkReply();
+});
+</script>
+</body>
+</html>
